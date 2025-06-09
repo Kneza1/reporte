@@ -8,8 +8,8 @@ import lombok.*;
 public class ReporteDTO {
 
     private Integer id;
-    private String nombre;
+    private String titulo;
     private String descripcion;
-    private String categoria;
-    private Boolean activo;
+    private String fechaCreacion;
+    private String estado;
 }

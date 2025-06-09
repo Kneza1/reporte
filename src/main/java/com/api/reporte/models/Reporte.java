@@ -13,12 +13,10 @@ public class Reporte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reporte")
+
     private Integer id;
-
-    private String nombre;
+    private String titulo;
     private String descripcion;
-
-
-    private String categoria;
-    private Boolean activo;
+    private String fechaCreacion;
+    private String estado;
 }

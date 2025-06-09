@@ -18,25 +18,25 @@ public class ReporteService {
     private ReporteDTO toDTO(Reporte reporte) {
         return new ReporteDTO(
                 reporte.getId(),
-                reporte.getNombre(),
+                reporte.getTitulo(),
                 reporte.getDescripcion(),
-                reporte.getCategoria(),
-                reporte.getActivo()
+                reporte.getFechaCreacion(),
+                reporte.getEstado()
         );
     }
 
     private Reporte toEntity(ReporteDTO dto) {
         Reporte reporte = new Reporte();
         reporte.setId(dto.getId()); // importante para actualizar
-        reporte.setNombre(dto.getNombre());
+        reporte.setTitulo(dto.getTitulo());
         reporte.setDescripcion(dto.getDescripcion());
-        reporte.setCategoria(dto.getCategoria());
-        reporte.setActivo(dto.getActivo());
+        reporte.setFechaCreacion(dto.getFechaCreacion());
+        reporte.setEstado(dto.getEstado());
         return reporte;
     }
 
     public ReporteDTO crear(ReporteDTO dto) {
-        Reporte producto = toEntity(dto);
+        Reporte reporte = toEntity(dto);
         return toDTO(reporteRepository.save(reporte));
     }
 
@@ -47,19 +47,19 @@ public class ReporteService {
     }
 
     public ReporteDTO obtenerPorId(Integer id) {
-        Reporte producto = reporteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        Reporte reporte = reporteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Reporte no encontrado"));
         return toDTO(reporte);
     }
 
     public ReporteDTO actualizar(Integer id, ReporteDTO dto) {
         Reporte existente = reporteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Reporte no encontrado"));
 
-        existente.setNombre(dto.getNombre());
+        existente.setTitulo(dto.getTitulo());
         existente.setDescripcion(dto.getDescripcion());
-        existente.setCategoria(dto.getCategoria());
-        existente.setActivo(dto.getActivo());
+        existente.setFechaCreacion(dto.getFechaCreacion());
+        existente.setEstado(dto.getEstado());
 
         return toDTO(reporteRepository.save(existente));
     }
