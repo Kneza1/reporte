@@ -1,11 +1,12 @@
 package com.api.reporte.dto;
 
+import org.springframework.hateoas.RepresentationModel;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReporteDTO {
+public class ReporteDTO extends RepresentationModel<ReporteDTO> {
 
     private Integer id;
     private String titulo;
